@@ -13,6 +13,7 @@ const App:React.FC = (props) => {
   ///inputの状態
   const [input,setInput] = useState("")
 
+  ///
   useEffect(()=>{
     const unsub = auth.onAuthStateChanged((user)=>{
       !user && props.history.push("/login");
@@ -32,6 +33,7 @@ const App:React.FC = (props) => {
     return ()=>unSub();
   },[]);
 
+  ///この関数でデータベースに追加する
   const newTask = (e)=>{
     db.collection("tasks").add({title:input});
     setInput("")

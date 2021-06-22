@@ -13,10 +13,12 @@ interface PROPS{
 const TaskItem:React.FC <PROPS>= (props) => {
 
     const [title,setTitle] = useState(props.title);
+    ///データの更新
     const editTask=()=>{
         db.collection("tasks").doc(props.id).set({title:title},{merge:true})
     };
 
+    ///データの削除
     const deleteTask=() =>{
         db.collection("tasks").doc(props.id).delete();
     };
